@@ -105,7 +105,7 @@ function FindProxyForURL($url, $host) {
     if (isInNet($ip, $directIpStorage[$i], '255.255.255.255')) return 'DIRECT';
   }
 
-  if ((!$proxyDomain && $proxyDomainStorage.length === 0) || (!$proxyUrl && $proxyUrlStorage.length === 0)) {
+  if ((!$proxyDomain || $proxyDomainStorage.length === 0) || (!$proxyUrl || $proxyUrlStorage.length === 0)) {
     return $proxyServer;
   } else {
     for (let $i = 0; $i < $proxyDomainStorage.length; $i++) {
