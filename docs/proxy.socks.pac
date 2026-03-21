@@ -1,4 +1,4 @@
-const proxyServer = 'SOCKS5 proxy.badhub.ru:8181; DIRECT';
+const $proxyServer = 'SOCKS5 proxy.badhub.ru:8181; DIRECT';
 const $dnsCache = {};
 const $proxyDomain = 0;
 const $proxyUrl = 0;
