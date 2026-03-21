@@ -69,9 +69,9 @@ function fastResolve($host) {
   return $ip;
 }
 
-function FindProxyForURL($url, $host) {
-  $url = $url.toLowerCase();
-  $host = $host.toLowerCase();
+function FindProxyForURL(url, host) {
+  let $url = url.toLowerCase();
+  let $host = host.toLowerCase();
   let $ip = fastResolve($host);
 
   if (isPlainHostName($host)) return 'DIRECT';
