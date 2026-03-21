@@ -1,4 +1,4 @@
-const proxyServer = 'HTTP proxy.badhub.ru:8181; DIRECT';
+const proxyServer = 'HTTP proxy.badhub.ru:8080; DIRECT';
 const dnsCache = {};
 
 const proxyDomains = [
