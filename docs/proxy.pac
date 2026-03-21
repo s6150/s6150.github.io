@@ -13,10 +13,10 @@ function FindProxyForURL(url, host) {
   if (isPlainHostName(host)) return 'DIRECT';
   if (shExpMatch(host, '*.local')) return 'DIRECT';
 
-  if (isInNet(ip, '127.0.0.0', '255.0.0.0')
-    || isInNet(ip, '10.0.0.0', '255.0.0.0')
-    || isInNet(ip, '172.16.0.0', '255.240.0.0')
-    || isInNet(ip, '192.168.0.0', '255.255.0.0')) {
+  if (isInNet(ip, '127.0.0.0', '255.0.0.0') ||
+    isInNet(ip, '10.0.0.0', '255.0.0.0') ||
+    isInNet(ip, '172.16.0.0', '255.240.0.0') ||
+    isInNet(ip, '192.168.0.0', '255.255.0.0')) {
     return 'DIRECT';
   }
 
