@@ -22,5 +22,5 @@ function FindProxyForURL(url, host) {
     return 'DIRECT';
   }
 
-  return 'SOCKS5 proxy.badhub.ru:8080; PROXY proxy.badhub.ru:8181; DIRECT';
+  return 'PROXY proxy.badhub.ru:8181; DIRECT';
 }
