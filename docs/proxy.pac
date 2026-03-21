@@ -1,3 +1,5 @@
+let dnsCache = {};
+
 function fastResolve(host) {
   let ip = dnsResolve(host);
   if (dnsCache[host]) return dnsCache[host];
