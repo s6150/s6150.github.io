@@ -2,34 +2,49 @@ const proxyServer = 'HTTP proxy.badhub.ru:8080; DIRECT';
 const dnsCache = {};
 
 const proxyDomains = [
-  'bbc.com',
-  'intel.com',
-  'meduza.io'
+  'cloudflare.com',
+  'facebook.com',
+  'instagram.com',
+  'twitter.com',
+  'x.com',
+];
+
+const localTLDs = [
+  '.home.arpa',
+  '.local',
+  '.localdomain',
 ];
 
 const directTLDs = [
-  '.local',
+  '.am',
+  '.az',
+  '.by',
+  '.kg',
+  '.kz',
+  '.md',
+  '.mn',
   '.ru',
-  '.ru.com',
-  '.ru.net',
-  '.sbp',
   '.su',
-  '.xn--p1ai' // .рф
+  '.tatar',
+  '.tj',
+  '.tm',
+  '.uz',
+  '.xn--p1ai', // .рф
 ];
 
 const directDomains = [
+  'vk.com',
   'yandex.com',
-  'yandex.md',
-  'yandex.net'
+  'yandex.net',
 ];
 
 const directURLs = [
-  '*.gosuslugi.ru'
+  '*.gosuslugi.ru*',
 ];
 
 const directIPs = [
   '77.88.8.8',
-  '77.88.8.1'
+  '77.88.8.1',
 ];
 
 function fastResolve(host) {
@@ -55,6 +70,10 @@ function FindProxyForURL(url, host) {
 
   for (let i = 0; i < proxyDomains.length; i++) {
     if (dnsDomainIs(host, proxyDomains[i])) return proxyServer;
+  }
+
+  for (let i = 0; i < localTLDs.length; i++) {
+    if (dnsDomainIs(host, localTLDs[i])) return 'DIRECT';
   }
 
   for (let i = 0; i < directTLDs.length; i++) {
