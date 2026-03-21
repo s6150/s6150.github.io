@@ -3,10 +3,23 @@ const dnsCache = {};
 
 const proxyDomains = [
   'cloudflare.com',
+  'deviantart.com',
   'facebook.com',
   'instagram.com',
+  'nnmclub.to',
+  'pixiv.com',
   'twitter.com',
+  'wixmp.com',
   'x.com',
+  'youtube.com',
+];
+
+const proxyURLs = [
+  '*ggpht*',
+  '*googlevideo*',
+  '*gstatic*',
+  '*nnmstatic*',
+  '*ytimg*',
 ];
 
 const localTLDs = [
@@ -68,10 +81,6 @@ function FindProxyForURL(url, host) {
     return 'DIRECT';
   }
 
-  for (let i = 0; i < proxyDomains.length; i++) {
-    if (dnsDomainIs(host, proxyDomains[i])) return proxyServer;
-  }
-
   for (let i = 0; i < localTLDs.length; i++) {
     if (dnsDomainIs(host, localTLDs[i])) return 'DIRECT';
   }
@@ -92,5 +101,15 @@ function FindProxyForURL(url, host) {
     if (isInNet(ip, directIPs[i], '255.255.255.255')) return 'DIRECT';
   }
 
-  return proxyServer;
+  if (proxyDomains.length === 0 || proxyURLs.length === 0) {
+    return proxyServer;
+  } else {
+    for (let i = 0; i < proxyDomains.length; i++) {
+      if (dnsDomainIs(host, proxyDomains[i])) return proxyServer;
+    }
+
+    for (let i = 0; i < proxyURLs.length; i++) {
+      if (shExpMatch(host, proxyURLs[i])) return proxyServer;
+    }
+  }
 }
