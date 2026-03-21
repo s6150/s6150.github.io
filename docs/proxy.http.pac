@@ -35,5 +35,5 @@ function FindProxyForURL(url, host) {
     }
   }
 
-  return 'HTTPS proxy.badhub.ru:8181; DIRECT';
+  return 'HTTP proxy.badhub.ru:8181; DIRECT';
 }
