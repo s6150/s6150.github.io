@@ -1,5 +1,11 @@
-const proxyServer = 'SOCKS5 proxy.badhub.ru:8181; DIRECT';
+const proxyServer = 'SOCKS5 proxy.badhub.ru:8080; DIRECT';
 const dnsCache = {};
+
+const proxyDomains = [
+  'bbc.com',
+  'intel.com',
+  'meduza.io'
+];
 
 const directTLDs = [
   '.local',
@@ -7,7 +13,8 @@ const directTLDs = [
   '.ru.com',
   '.ru.net',
   '.sbp',
-  '.su'
+  '.su',
+  '.xn--p1ai' // .рф
 ];
 
 const directDomains = [
@@ -44,6 +51,10 @@ function FindProxyForURL(url, host) {
     isInNet(ip, '172.16.0.0', '255.240.0.0') ||
     isInNet(ip, '192.168.0.0', '255.255.0.0')) {
     return 'DIRECT';
+  }
+
+  for (let i = 0; i < proxyDomains.length; i++) {
+    if (dnsDomainIs(host, proxyDomains[i])) return proxyServer;
   }
 
   for (let i = 0; i < directTLDs.length; i++) {
