@@ -1,11 +1,28 @@
-let dnsCache = {};
-let directTLDs = [
-  '*.local',
-  '*.ru',
-  '*.ru.com',
-  '*.ru.net',
-  '*.sbp',
-  '*.su'
+const proxyServer = 'HTTP proxy.badhub.ru:8181; DIRECT';
+const dnsCache = {};
+
+const directTLDs = [
+  '.local',
+  '.ru',
+  '.ru.com',
+  '.ru.net',
+  '.sbp',
+  '.su'
+];
+
+const directDomains = [
+  'yandex.com',
+  'yandex.md',
+  'yandex.net'
+];
+
+const directURLs = [
+  '*.gosuslugi.ru'
+];
+
+const directIPs = [
+  '77.88.8.8',
+  '77.88.8.1'
 ];
 
 function fastResolve(host) {
@@ -30,10 +47,20 @@ function FindProxyForURL(url, host) {
   }
 
   for (let i = 0; i < directTLDs.length; i++) {
-    if (shExpMatch(host, directTLDs[i])) {
-      return 'DIRECT';
-    }
+    if (dnsDomainIs(host, directTLDs[i])) return 'DIRECT';
   }
 
-  return 'HTTP proxy.badhub.ru:8181; DIRECT';
+  for (let i = 0; i < directDomains.length; i++) {
+    if (dnsDomainIs(host, directDomains[i])) return 'DIRECT';
+  }
+
+  for (let i = 0; i < directURLs.length; i++) {
+    if (shExpMatch(host, directURLs[i])) return 'DIRECT';
+  }
+
+  for (let i = 0; i < directIPs.length; i++) {
+    if (isInNet(ip, directIPs[i], '255.255.255.255')) return 'DIRECT';
+  }
+
+  return proxyServer;
 }
