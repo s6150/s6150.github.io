@@ -24,6 +24,12 @@ const directTldStorage = [
   '.xn--p1ai', // .рф
 ];
 
+const directDomainStorage = [
+  'vk.com',
+  'yandex.com',
+  'yandex.net',
+];
+
 function fastResolve(host) {
   let ip = dnsResolve(host);
   if (dnsCache[host]) return dnsCache[host];
@@ -56,6 +62,12 @@ function FindProxyForURL(url, host) {
   if (directTldStorage.length !== 0) {
     for (let i = 0; i < directTldStorage.length; i++) {
       if (dnsDomainIs(host, directTldStorage[i])) return 'DIRECT';
+    }
+  }
+
+  if (directDomainStorage.length !== 0) {
+    for (let i = 0; i < directDomainStorage.length; i++) {
+      if (dnsDomainIs(host, directDomainStorage[i])) return 'DIRECT';
     }
   }
 
