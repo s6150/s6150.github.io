@@ -72,9 +72,10 @@ function fastResolve(host) {
 function FindProxyForURL(url, host) {
   url = url.toLowerCase();
   host = host.toLowerCase();
-  let ip = fastResolve(host);
 
   if (isPlainHostName(host)) return 'DIRECT';
+
+  let ip = fastResolve(host);
 
   if (
     isInNet(ip, '127.0.0.0', '255.0.0.0') ||
