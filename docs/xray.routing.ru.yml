@@ -1,0 +1,22 @@
+- remarks: 'Local'
+  enabled: true
+  locked: false
+  ip:
+    - 'geoip:private'
+  domain:
+    - 'geosite:private'
+  outboundTag: 'direct'
+- remarks: 'Ads-Block'
+  enabled: true
+  locked: false
+  domain:
+    - 'geosite:category-ads-all'
+  outboundTag: 'block'
+- remarks: 'RU'
+  enabled: true
+  locked: false
+  ip:
+    - 'geoip:ru'
+  domain:
+    - 'geosite:category-ru'
+  outboundTag: 'direct'
