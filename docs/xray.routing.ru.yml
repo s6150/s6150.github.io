@@ -9,7 +9,8 @@
 - remarks: 'BitTorrent'
   enabled: true
   locked: false
-  protocol: 'bittorrent'
+  protocol:
+    - 'bittorrent'
   outboundTag: 'direct'
 - remarks: 'UDP-443'
   enabled: true
