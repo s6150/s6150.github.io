@@ -12,6 +12,11 @@ https://badhub.ru/proxy.http.pac
 https://badhub.ru/proxy.socks.pac
 ```
 
+### XRay
+
+- Routing:
+  - [RU](/xray.routing.ru.json)
+
 ## Contacts
 
 - [mail@kaikim.ru](mailto:mail@kaikim.ru)
