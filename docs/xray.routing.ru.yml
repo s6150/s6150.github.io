@@ -6,7 +6,18 @@
   domain:
     - 'geosite:private'
   outboundTag: 'direct'
-- remarks: 'Ads-Block'
+- remarks: 'BitTorrent'
+  enabled: true
+  locked: false
+  protocol: 'bittorrent'
+  outboundTag: 'direct'
+- remarks: 'UDP-443'
+  enabled: true
+  locked: false
+  port: '443'
+  network: 'udp'
+  outboundTag: 'block'
+- remarks: 'Ads'
   enabled: true
   locked: false
   domain:
