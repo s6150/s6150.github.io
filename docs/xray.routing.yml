@@ -1,10 +1,10 @@
-- remarks: 'Local IP'
+- remarks: 'Local IPs'
   enabled: true
   locked: false
   ip:
     - 'geoip:private'
   outboundTag: 'direct'
-- remarks: 'Local Domain'
+- remarks: 'Local Domains'
   enabled: true
   locked: false
   domain:
@@ -28,19 +28,19 @@
   domain:
     - 'geosite:category-ads-all'
   outboundTag: 'block'
-- remarks: 'Russian IP'
+- remarks: 'Russian IPs'
   enabled: true
   locked: false
   ip:
     - 'geoip:ru'
   outboundTag: 'direct'
-- remarks: 'Russian Domain'
+- remarks: 'Russian Domains'
   enabled: true
   locked: false
   domain:
     - 'geosite:category-ru'
   outboundTag: 'direct'
-- remarks: 'Russian Domain (EXT)'
+- remarks: 'Russian Domains (EXT)'
   enabled: true
   locked: false
   domain:
